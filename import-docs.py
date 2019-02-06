@@ -43,7 +43,7 @@ def main(options):
         fields = doc['fields']
         for k, v in fields.items():
             if '-array' not in indices[k]['IndexFieldType']:
-                fields[k] = v[0]  # turn list into scalar, not text-array, lteral-array
+                fields[k] = v[0]  # turn list into scalar, not text-array, literal-array
         batch.append({'type': 'add', 'id': doc['id'], 'fields': fields})
         bytesize = len(repr(batch))
         if bytesize > options.batchbytes:
