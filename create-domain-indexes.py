@@ -74,18 +74,6 @@ def main(args):
         print('Indexing docs not needed')
 
 
-def get_fields(domain):
-    """Return dict of CloudSearch fields and definitions.
-
-    field_name: {'IndexFieldName': 'thename',
-                 'IndexFieldType': 'thetype',
-                 'TypeSpecificOptions': {...}}
-    """
-    csc = boto3.client('cloudsearch')
-    res = csc.describe_index_fields(DomainName=domain)['IndexFields']
-    return {f['Options']['IndexFieldName']: f['Options'] for f in res}
-
-
 if __name__ == '__main__':
     parser = ArgumentParser(description=('Create "title", and exact "albums" with humane'
                                          ' text "albums_text" suggester'),
